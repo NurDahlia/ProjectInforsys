@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/public/home">Home</a>
+      <a mat-list-item routerLink="/public/sofi">SOFI</a>
+      <a mat-list-item routerLink="/public/pisi">PISI</a>
+      <a mat-list-item routerLink="/public/about-us">About Us</a>
+      <a mat-list-item routerLink="/public/contact-us">Contact Us</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <span><img src="../assets/inforsys-logo.png" alt="logobar" style="height: 34px; margin-top: 3px;"></span>
+      <span class="example-spacer"></span>
+      <a mat-button routerLink="/public/home">Home</a>
+      <a mat-button routerLink="/public/sofi">SOFI</a>
+      <a mat-button routerLink="/public/pisi">PISI</a>
+      <a mat-button routerLink="/public/about-us">About Us</a>
+      <a mat-button routerLink="/public/contact-us">Contact Us</a>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
